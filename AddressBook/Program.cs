@@ -1,13 +1,12 @@
-﻿using System;
+﻿using AddressBook;
+using System;
 using System.Collections.Generic;
-
-namespace AddressBook
+namespace AddressBookSystemProject
 {
-    internal class Program
+    class AddressBookMain
     {
         static void Main(string[] args)
         {
-
             Dictionary<string, AddressBookBuilder> addressBookDict = new Dictionary<string, AddressBookBuilder>();
             Console.WriteLine("How many address Book you want to add");
             int numAddressBook = Convert.ToInt32(Console.ReadLine());
@@ -38,6 +37,24 @@ namespace AddressBook
             string firstNameOfContactToBeDeleted = Console.ReadLine();
             addressBookDict[deleteContactInAddressBook].DeleteContact(firstNameOfContactToBeDeleted);
             addressBookDict[deleteContactInAddressBook].DisplayContacts();
+            Console.WriteLine("Enter the city or state where you want to find the persons");
+            String findPlace = Console.ReadLine();
+            foreach (var element in addressBookDict)
+            {
+                List<String> listOfPersonsinPlace = element.Value.findPersons(findPlace);
+                if (listOfPersonsinPlace.Count == 0)
+                {
+                    Console.WriteLine("No Person in that city/state for address book " + element.Key);
+                }
+                else
+                {
+                    Console.WriteLine("Persons in that city/state for address book " + element.Key + " :-");
+                    foreach (var name in listOfPersonsinPlace)
+                    {
+                        Console.WriteLine(name);
+                    }
+                }
+            }
         }
         public static void takeInputAndAddToContacts(AddressBookBuilder addressBook)
         {
