@@ -1,2 +1,0 @@
-﻿Address Book Name: AB1
-First Name: p, Last Name: B, Address: wai, City: Pune, State: Maharashtra, Zip: 41236, Phone Number: 985353210, Email-id: abc5@gmail.com
